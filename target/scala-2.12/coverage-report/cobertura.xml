@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
+<coverage 
+line-rate="1.00" lines-valid="49" lines-covered="49" branches-valid="0" branches-covered="0" branch-rate="1.00" complexity="0" version="1.0" timestamp="1559727723999">
+    <sources>
+        <source>--source</source>
+        <source>/home/shubham/Desktop/ThirdTest/src/main/scala</source>
+    </sources>
+    <packages>
+        <package name="com.knoldus" line-rate="1.00" branch-rate="1.00" complexity="0">
+            <classes>
+                <class 
+                name="com.knoldus.BillPayment" filename="com/knoldus/BillPayment.scala" line-rate="1.00" branch-rate="1.00" complexity="0">
+                    <methods>
+                        <method 
+                        name="com.knoldus/BillPayment/getTotalBillAmount" signature="()V" line-rate="1.00" branch-rate="1.00" complexity="0">
+                            <lines>
+                                <line number="32" hits="1" branch="false"/>
+                            </lines>
+</method>
+                        <method 
+                        name="com.knoldus/BillPayment/calculateTaxForItems" signature="()V" line-rate="1.00" branch-rate="1.00" complexity="0">
+                            <lines>
+                                <line number="42" hits="1" branch="false"/>
+                                <line number="36" hits="1" branch="false"/>
+                                <line number="40" hits="1" branch="false"/>
+                                <line number="42" hits="1" branch="false"/>
+                                <line number="46" hits="1" branch="false"/>
+                                <line number="36" hits="1" branch="false"/>
+                                <line number="40" hits="1" branch="false"/>
+                                <line number="40" hits="1" branch="false"/>
+                                <line number="38" hits="1" branch="false"/>
+                                <line number="44" hits="1" branch="false"/>
+                            </lines>
+</method>
+                        <method 
+                        name="com.knoldus/BillPayment/getTotalBillForProducts" signature="()V" line-rate="1.00" branch-rate="1.00" complexity="0">
+                            <lines>
+                                <line number="52" hits="1" branch="false"/>
+                                <line number="53" hits="1" branch="false"/>
+                                <line number="53" hits="1" branch="false"/>
+                                <line number="53" hits="1" branch="false"/>
+                                <line number="52" hits="1" branch="false"/>
+                                <line number="53" hits="1" branch="false"/>
+                            </lines>
+</method>
+                        <method name="com.knoldus/BillPayment/&lt;none&gt;" signature="()V" line-rate="1.00" branch-rate="1.00" complexity="0">
+                            <lines>
+                                <line number="25" hits="1" branch="false"/>
+                                <line number="24" hits="1" branch="false"/>
+                                <line number="19" hits="1" branch="false"/>
+                                <line number="16" hits="1" branch="false"/>
+                                <line number="26" hits="1" branch="false"/>
+                                <line number="17" hits="1" branch="false"/>
+                                <line number="27" hits="1" branch="false"/>
+                                <line number="25" hits="1" branch="false"/>
+                                <line number="12" hits="1" branch="false"/>
+                                <line number="15" hits="1" branch="false"/>
+                                <line number="18" hits="1" branch="false"/>
+                                <line number="18" hits="1" branch="false"/>
+                                <line number="15" hits="1" branch="false"/>
+                                <line number="27" hits="1" branch="false"/>
+                                <line number="25" hits="1" branch="false"/>
+                                <line number="19" hits="1" branch="false"/>
+                                <line number="16" hits="1" branch="false"/>
+                                <line number="26" hits="1" branch="false"/>
+                                <line number="17" hits="1" branch="false"/>
+                                <line number="10" hits="1" branch="false"/>
+                                <line number="22" hits="1" branch="false"/>
+                                <line number="27" hits="1" branch="false"/>
+                                <line number="26" hits="1" branch="false"/>
+                                <line number="14" hits="1" branch="false"/>
+                                <line number="17" hits="1" branch="false"/>
+                                <line number="25" hits="1" branch="false"/>
+                                <line number="15" hits="1" branch="false"/>
+                                <line number="18" hits="1" branch="false"/>
+                                <line number="27" hits="1" branch="false"/>
+                                <line number="19" hits="1" branch="false"/>
+                                <line number="26" hits="1" branch="false"/>
+                                <line number="16" hits="1" branch="false"/>
+                            </lines>
+                        </method>
+                    </methods>
+                    <lines>
+                        <line number="25" hits="1" branch="false"/>
+                        <line number="24" hits="1" branch="false"/>
+                        <line number="42" hits="1" branch="false"/>
+                        <line number="19" hits="1" branch="false"/>
+                        <line number="16" hits="1" branch="false"/>
+                        <line number="36" hits="1" branch="false"/>
+                        <line number="52" hits="1" branch="false"/>
+                        <line number="26" hits="1" branch="false"/>
+                        <line number="17" hits="1" branch="false"/>
+                        <line number="27" hits="1" branch="false"/>
+                        <line number="40" hits="1" branch="false"/>
+                        <line number="53" hits="1" branch="false"/>
+                        <line number="25" hits="1" branch="false"/>
+                        <line number="12" hits="1" branch="false"/>
+                        <line number="15" hits="1" branch="false"/>
+                        <line number="18" hits="1" branch="false"/>
+                        <line number="53" hits="1" branch="false"/>
+                        <line number="53" hits="1" branch="false"/>
+                        <line number="42" hits="1" branch="false"/>
+                        <line number="18" hits="1" branch="false"/>
+                        <line number="15" hits="1" branch="false"/>
+                        <line number="27" hits="1" branch="false"/>
+                        <line number="25" hits="1" branch="false"/>
+                        <line number="19" hits="1" branch="false"/>
+                        <line number="16" hits="1" branch="false"/>
+                        <line number="46" hits="1" branch="false"/>
+                        <line number="26" hits="1" branch="false"/>
+                        <line number="36" hits="1" branch="false"/>
+                        <line number="17" hits="1" branch="false"/>
+                        <line number="40" hits="1" branch="false"/>
+                        <line number="10" hits="1" branch="false"/>
+                        <line number="22" hits="1" branch="false"/>
+                        <line number="27" hits="1" branch="false"/>
+                        <line number="52" hits="1" branch="false"/>
+                        <line number="26" hits="1" branch="false"/>
+                        <line number="40" hits="1" branch="false"/>
+                        <line number="14" hits="1" branch="false"/>
+                        <line number="17" hits="1" branch="false"/>
+                        <line number="25" hits="1" branch="false"/>
+                        <line number="53" hits="1" branch="false"/>
+                        <line number="15" hits="1" branch="false"/>
+                        <line number="18" hits="1" branch="false"/>
+                        <line number="27" hits="1" branch="false"/>
+                        <line number="38" hits="1" branch="false"/>
+                        <line number="19" hits="1" branch="false"/>
+                        <line number="44" hits="1" branch="false"/>
+                        <line number="26" hits="1" branch="false"/>
+                        <line number="16" hits="1" branch="false"/>
+                        <line number="32" hits="1" branch="false"/>
+                    </lines>
+</class>
+            </classes>
+        </package>
+    </packages>
+</coverage>

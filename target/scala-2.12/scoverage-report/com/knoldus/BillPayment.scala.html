@@ -1,0 +1,1133 @@
+<html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title id="title">
+          com/knoldus/BillPayment.scala.html
+        </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.20.1/css/theme.default.min.css" type="text/css"/><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.20.1/js/jquery.tablesorter.min.js"></script><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" type="text/css"/><script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script><script type="text/javascript">
+        $(document).ready(function() {$(".tablesorter").tablesorter();});
+      </script>
+        <style>
+          table.codegrid { font-family: monospace; font-size: 12px; width: auto!important; }table.statementlist { width: auto!important; font-size: 13px; } table.codegrid td { padding: 0!important; border: 0!important } table td.linenumber { width: 40px!important; } 
+        </style>
+      </head>
+      <body style="font-family: monospace;">
+        <ul class="nav nav-tabs">
+          <li>
+            <a href="#codegrid" data-toggle="tab">Codegrid</a>
+          </li>
+          <li>
+            <a href="#statementlist" data-toggle="tab">Statement List</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="codegrid">
+            <pre style='font-size: 12pt; font-family: courier;'>1 <span style=''>package com.knoldus
+</span>2 <span style=''>
+</span>3 <span style=''>import com.typesafe.config.{Config, ConfigFactory}
+</span>4 <span style=''>import com.typesafe.scalalogging.LazyLogging
+</span>5 <span style=''>
+</span>6 <span style=''>class BillPayment extends Billable with LazyLogging {
+</span>7 <span style=''>
+</span>8 <span style=''>  logger.info(&quot;Started Service......&quot;)
+</span>9 <span style=''>
+</span>10 <span style=''>  val conf: Config = </span><span style='background: #AEF1AE'>ConfigFactory.load()</span><span style=''>
+</span>11 <span style=''>
+</span>12 <span style=''>  val productConfig: Config = </span><span style='background: #AEF1AE'>conf.getConfig(&quot;product&quot;)</span><span style=''>
+</span>13 <span style=''>
+</span>14 <span style=''>  val itemsPrize: Map[String, Double] = </span><span style='background: #AEF1AE'>Map(
+</span>15 <span style=''></span><span style='background: #AEF1AE'>    &quot;Pizza&quot; -&gt; productConfig.getDouble(&quot;Pizza&quot;),
+</span>16 <span style=''></span><span style='background: #AEF1AE'>    &quot;Fish&quot; -&gt; productConfig.getDouble(&quot;Fish&quot;),
+</span>17 <span style=''></span><span style='background: #AEF1AE'>    &quot;ColdDrink&quot; -&gt; productConfig.getDouble(&quot;ColdDrink&quot;),
+</span>18 <span style=''></span><span style='background: #AEF1AE'>    &quot;Paracetamol&quot; -&gt; productConfig.getDouble(&quot;Paracetamol&quot;),
+</span>19 <span style=''></span><span style='background: #AEF1AE'>    &quot;Paracetamol350&quot; -&gt; productConfig.getDouble(&quot;Paracetamol350&quot;)
+</span>20 <span style=''></span><span style='background: #AEF1AE'>  )</span><span style=''>
+</span>21 <span style=''>
+</span>22 <span style=''>  val taxConfig: Config = </span><span style='background: #AEF1AE'>conf.getConfig(&quot;TaxSlab&quot;)</span><span style=''>
+</span>23 <span style=''>
+</span>24 <span style=''>  val taxSlab: Map[String, Double] = </span><span style='background: #AEF1AE'>Map(
+</span>25 <span style=''></span><span style='background: #AEF1AE'>    &quot;Food&quot; -&gt; taxConfig.getInt(&quot;Food&quot;),
+</span>26 <span style=''></span><span style='background: #AEF1AE'>    &quot;Medical&quot; -&gt; taxConfig.getInt(&quot;Medical&quot;),
+</span>27 <span style=''></span><span style='background: #AEF1AE'>    &quot;Alcohol&quot; -&gt; taxConfig.getInt(&quot;Alcohol&quot;)
+</span>28 <span style=''></span><span style='background: #AEF1AE'>  )</span><span style=''>
+</span>29 <span style=''>
+</span>30 <span style=''>  def getTotalBillAmount(products: Map[String, List[(String, Double)]]): Double = {
+</span>31 <span style=''>    logger.info(s&quot;total Payment to Done is ${getTotalBillForProducts(products)}&quot;)
+</span>32 <span style=''>    </span><span style='background: #AEF1AE'>getTotalBillForProducts(products)</span><span style=''>
+</span>33 <span style=''>  }
+</span>34 <span style=''>
+</span>35 <span style=''>  override def calculateTaxForItems(item: (String, List[(String, Double)])): Double = {
+</span>36 <span style=''>    val tax = </span><span style='background: #AEF1AE'>taxSlab(item._1)</span><span style=''>
+</span>37 <span style=''>
+</span>38 <span style=''>    val price = </span><span style='background: #AEF1AE'>item._2.map(value =&gt; {
+</span>39 <span style=''></span><span style='background: #AEF1AE'>      logger.info(s&quot;product Name  ${value._1} and quantity ${value._2} ======= ${itemsPrize(value._1) * value._2}&quot;)
+</span>40 <span style=''></span><span style='background: #AEF1AE'>      itemsPrize(value._1) * value._2
+</span>41 <span style=''></span><span style='background: #AEF1AE'>    }
+</span>42 <span style=''></span><span style='background: #AEF1AE'>    ).sum</span><span style=''>
+</span>43 <span style=''>
+</span>44 <span style=''>    val taxAmount = </span><span style='background: #AEF1AE'>(tax / 100) * price</span><span style=''>
+</span>45 <span style=''>    logger.info(s&quot;total Amount for ${item._1} is ${taxAmount + price} with GST ${tax}&quot;)
+</span>46 <span style=''>    </span><span style='background: #AEF1AE'>taxAmount + price</span><span style=''>
+</span>47 <span style=''>
+</span>48 <span style=''>  }
+</span>49 <span style=''>
+</span>50 <span style=''>  override def getTotalBillForProducts(itemList: Map[String, List[(String, Double)]]): Double = {
+</span>51 <span style=''>
+</span>52 <span style=''>    val data2 = </span><span style='background: #AEF1AE'>itemList.mapValues(_.toList)</span><span style=''>
+</span>53 <span style=''>    </span><span style='background: #AEF1AE'>data2.foldLeft(0.0)((r, c) =&gt; r + calculateTaxForItems(c))</span><span style=''>
+</span>54 <span style=''>
+</span>55 <span style=''>  }
+</span>56 <span style=''>
+</span>57 <span style=''>}
+</span></pre>
+          </div>
+          <div class="tab-pane" id="statementlist">
+            <table cellspacing="0" cellpadding="0" class="table statementlist">
+      <tr>
+        <th>Line</th>
+        <th>Stmt Id</th>
+        <th>Pos</th>
+        <th>Tree</th>
+        <th>Symbol</th>
+        <th>Code</th>
+      </tr><tr>
+        <td>
+          10
+        </td>
+        <td>
+          1
+        </td>
+        <td>
+          234
+          -
+          254
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          com.typesafe.config.ConfigFactory.load
+        </td>
+        <td style="background: #AEF1AE">
+          com.typesafe.config.ConfigFactory.load()
+        </td>
+      </tr><tr>
+        <td>
+          12
+        </td>
+        <td>
+          2
+        </td>
+        <td>
+          286
+          -
+          311
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          com.typesafe.config.Config.getConfig
+        </td>
+        <td style="background: #AEF1AE">
+          BillPayment.this.conf.getConfig(&quot;product&quot;)
+        </td>
+      </tr><tr>
+        <td>
+          14
+        </td>
+        <td>
+          18
+        </td>
+        <td>
+          353
+          -
+          641
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.generic.GenMapFactory.apply
+        </td>
+        <td style="background: #AEF1AE">
+          scala.Predef.Map.apply[String, Double](scala.Predef.ArrowAssoc[String](&quot;Pizza&quot;).-&gt;[Double](BillPayment.this.productConfig.getDouble(&quot;Pizza&quot;)), scala.Predef.ArrowAssoc[String](&quot;Fish&quot;).-&gt;[Double](BillPayment.this.productConfig.getDouble(&quot;Fish&quot;)), scala.Predef.ArrowAssoc[String](&quot;ColdDrink&quot;).-&gt;[Double](BillPayment.this.productConfig.getDouble(&quot;ColdDrink&quot;)), scala.Predef.ArrowAssoc[String](&quot;Paracetamol&quot;).-&gt;[Double](BillPayment.this.productConfig.getDouble(&quot;Paracetamol&quot;)), scala.Predef.ArrowAssoc[String](&quot;Paracetamol350&quot;).-&gt;[Double](BillPayment.this.productConfig.getDouble(&quot;Paracetamol350&quot;)))
+        </td>
+      </tr><tr>
+        <td>
+          15
+        </td>
+        <td>
+          5
+        </td>
+        <td>
+          362
+          -
+          405
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Predef.ArrowAssoc.-&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          scala.Predef.ArrowAssoc[String](&quot;Pizza&quot;).-&gt;[Double](BillPayment.this.productConfig.getDouble(&quot;Pizza&quot;))
+        </td>
+      </tr><tr>
+        <td>
+          15
+        </td>
+        <td>
+          4
+        </td>
+        <td>
+          373
+          -
+          405
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          com.typesafe.config.Config.getDouble
+        </td>
+        <td style="background: #AEF1AE">
+          BillPayment.this.productConfig.getDouble(&quot;Pizza&quot;)
+        </td>
+      </tr><tr>
+        <td>
+          15
+        </td>
+        <td>
+          3
+        </td>
+        <td>
+          362
+          -
+          369
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;Pizza&quot;
+        </td>
+      </tr><tr>
+        <td>
+          16
+        </td>
+        <td>
+          8
+        </td>
+        <td>
+          411
+          -
+          452
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Predef.ArrowAssoc.-&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          scala.Predef.ArrowAssoc[String](&quot;Fish&quot;).-&gt;[Double](BillPayment.this.productConfig.getDouble(&quot;Fish&quot;))
+        </td>
+      </tr><tr>
+        <td>
+          16
+        </td>
+        <td>
+          7
+        </td>
+        <td>
+          421
+          -
+          452
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          com.typesafe.config.Config.getDouble
+        </td>
+        <td style="background: #AEF1AE">
+          BillPayment.this.productConfig.getDouble(&quot;Fish&quot;)
+        </td>
+      </tr><tr>
+        <td>
+          16
+        </td>
+        <td>
+          6
+        </td>
+        <td>
+          411
+          -
+          417
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;Fish&quot;
+        </td>
+      </tr><tr>
+        <td>
+          17
+        </td>
+        <td>
+          11
+        </td>
+        <td>
+          458
+          -
+          509
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Predef.ArrowAssoc.-&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          scala.Predef.ArrowAssoc[String](&quot;ColdDrink&quot;).-&gt;[Double](BillPayment.this.productConfig.getDouble(&quot;ColdDrink&quot;))
+        </td>
+      </tr><tr>
+        <td>
+          17
+        </td>
+        <td>
+          10
+        </td>
+        <td>
+          473
+          -
+          509
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          com.typesafe.config.Config.getDouble
+        </td>
+        <td style="background: #AEF1AE">
+          BillPayment.this.productConfig.getDouble(&quot;ColdDrink&quot;)
+        </td>
+      </tr><tr>
+        <td>
+          17
+        </td>
+        <td>
+          9
+        </td>
+        <td>
+          458
+          -
+          469
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;ColdDrink&quot;
+        </td>
+      </tr><tr>
+        <td>
+          18
+        </td>
+        <td>
+          14
+        </td>
+        <td>
+          515
+          -
+          570
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Predef.ArrowAssoc.-&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          scala.Predef.ArrowAssoc[String](&quot;Paracetamol&quot;).-&gt;[Double](BillPayment.this.productConfig.getDouble(&quot;Paracetamol&quot;))
+        </td>
+      </tr><tr>
+        <td>
+          18
+        </td>
+        <td>
+          13
+        </td>
+        <td>
+          532
+          -
+          570
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          com.typesafe.config.Config.getDouble
+        </td>
+        <td style="background: #AEF1AE">
+          BillPayment.this.productConfig.getDouble(&quot;Paracetamol&quot;)
+        </td>
+      </tr><tr>
+        <td>
+          18
+        </td>
+        <td>
+          12
+        </td>
+        <td>
+          515
+          -
+          528
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;Paracetamol&quot;
+        </td>
+      </tr><tr>
+        <td>
+          19
+        </td>
+        <td>
+          17
+        </td>
+        <td>
+          576
+          -
+          637
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Predef.ArrowAssoc.-&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          scala.Predef.ArrowAssoc[String](&quot;Paracetamol350&quot;).-&gt;[Double](BillPayment.this.productConfig.getDouble(&quot;Paracetamol350&quot;))
+        </td>
+      </tr><tr>
+        <td>
+          19
+        </td>
+        <td>
+          16
+        </td>
+        <td>
+          596
+          -
+          637
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          com.typesafe.config.Config.getDouble
+        </td>
+        <td style="background: #AEF1AE">
+          BillPayment.this.productConfig.getDouble(&quot;Paracetamol350&quot;)
+        </td>
+      </tr><tr>
+        <td>
+          19
+        </td>
+        <td>
+          15
+        </td>
+        <td>
+          576
+          -
+          592
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;Paracetamol350&quot;
+        </td>
+      </tr><tr>
+        <td>
+          22
+        </td>
+        <td>
+          19
+        </td>
+        <td>
+          669
+          -
+          694
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          com.typesafe.config.Config.getConfig
+        </td>
+        <td style="background: #AEF1AE">
+          BillPayment.this.conf.getConfig(&quot;TaxSlab&quot;)
+        </td>
+      </tr><tr>
+        <td>
+          24
+        </td>
+        <td>
+          32
+        </td>
+        <td>
+          733
+          -
+          872
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.generic.GenMapFactory.apply
+        </td>
+        <td style="background: #AEF1AE">
+          scala.Predef.Map.apply[String, Double](scala.Predef.ArrowAssoc[String](&quot;Food&quot;).-&gt;[Double](BillPayment.this.taxConfig.getInt(&quot;Food&quot;).toDouble), scala.Predef.ArrowAssoc[String](&quot;Medical&quot;).-&gt;[Double](BillPayment.this.taxConfig.getInt(&quot;Medical&quot;).toDouble), scala.Predef.ArrowAssoc[String](&quot;Alcohol&quot;).-&gt;[Double](BillPayment.this.taxConfig.getInt(&quot;Alcohol&quot;).toDouble))
+        </td>
+      </tr><tr>
+        <td>
+          25
+        </td>
+        <td>
+          23
+        </td>
+        <td>
+          742
+          -
+          776
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Predef.ArrowAssoc.-&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          scala.Predef.ArrowAssoc[String](&quot;Food&quot;).-&gt;[Double](BillPayment.this.taxConfig.getInt(&quot;Food&quot;).toDouble)
+        </td>
+      </tr><tr>
+        <td>
+          25
+        </td>
+        <td>
+          20
+        </td>
+        <td>
+          742
+          -
+          748
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;Food&quot;
+        </td>
+      </tr><tr>
+        <td>
+          25
+        </td>
+        <td>
+          22
+        </td>
+        <td>
+          752
+          -
+          776
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Int.toDouble
+        </td>
+        <td style="background: #AEF1AE">
+          BillPayment.this.taxConfig.getInt(&quot;Food&quot;).toDouble
+        </td>
+      </tr><tr>
+        <td>
+          25
+        </td>
+        <td>
+          21
+        </td>
+        <td>
+          769
+          -
+          775
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;Food&quot;
+        </td>
+      </tr><tr>
+        <td>
+          26
+        </td>
+        <td>
+          26
+        </td>
+        <td>
+          795
+          -
+          822
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Int.toDouble
+        </td>
+        <td style="background: #AEF1AE">
+          BillPayment.this.taxConfig.getInt(&quot;Medical&quot;).toDouble
+        </td>
+      </tr><tr>
+        <td>
+          26
+        </td>
+        <td>
+          25
+        </td>
+        <td>
+          812
+          -
+          821
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;Medical&quot;
+        </td>
+      </tr><tr>
+        <td>
+          26
+        </td>
+        <td>
+          27
+        </td>
+        <td>
+          782
+          -
+          822
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Predef.ArrowAssoc.-&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          scala.Predef.ArrowAssoc[String](&quot;Medical&quot;).-&gt;[Double](BillPayment.this.taxConfig.getInt(&quot;Medical&quot;).toDouble)
+        </td>
+      </tr><tr>
+        <td>
+          26
+        </td>
+        <td>
+          24
+        </td>
+        <td>
+          782
+          -
+          791
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;Medical&quot;
+        </td>
+      </tr><tr>
+        <td>
+          27
+        </td>
+        <td>
+          29
+        </td>
+        <td>
+          858
+          -
+          867
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;Alcohol&quot;
+        </td>
+      </tr><tr>
+        <td>
+          27
+        </td>
+        <td>
+          31
+        </td>
+        <td>
+          828
+          -
+          868
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Predef.ArrowAssoc.-&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          scala.Predef.ArrowAssoc[String](&quot;Alcohol&quot;).-&gt;[Double](BillPayment.this.taxConfig.getInt(&quot;Alcohol&quot;).toDouble)
+        </td>
+      </tr><tr>
+        <td>
+          27
+        </td>
+        <td>
+          28
+        </td>
+        <td>
+          828
+          -
+          837
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;Alcohol&quot;
+        </td>
+      </tr><tr>
+        <td>
+          27
+        </td>
+        <td>
+          30
+        </td>
+        <td>
+          841
+          -
+          868
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Int.toDouble
+        </td>
+        <td style="background: #AEF1AE">
+          BillPayment.this.taxConfig.getInt(&quot;Alcohol&quot;).toDouble
+        </td>
+      </tr><tr>
+        <td>
+          32
+        </td>
+        <td>
+          33
+        </td>
+        <td>
+          1044
+          -
+          1077
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          com.knoldus.BillPayment.getTotalBillForProducts
+        </td>
+        <td style="background: #AEF1AE">
+          BillPayment.this.getTotalBillForProducts(products)
+        </td>
+      </tr><tr>
+        <td>
+          36
+        </td>
+        <td>
+          35
+        </td>
+        <td>
+          1185
+          -
+          1201
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.MapLike.apply
+        </td>
+        <td style="background: #AEF1AE">
+          BillPayment.this.taxSlab.apply(item._1)
+        </td>
+      </tr><tr>
+        <td>
+          36
+        </td>
+        <td>
+          34
+        </td>
+        <td>
+          1193
+          -
+          1200
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Tuple2._1
+        </td>
+        <td style="background: #AEF1AE">
+          item._1
+        </td>
+      </tr><tr>
+        <td>
+          38
+        </td>
+        <td>
+          39
+        </td>
+        <td>
+          1230
+          -
+          1230
+        </td>
+        <td>
+          TypeApply
+        </td>
+        <td>
+          scala.collection.immutable.List.canBuildFrom
+        </td>
+        <td style="background: #AEF1AE">
+          immutable.this.List.canBuildFrom[Double]
+        </td>
+      </tr><tr>
+        <td>
+          40
+        </td>
+        <td>
+          38
+        </td>
+        <td>
+          1364
+          -
+          1395
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Double.*
+        </td>
+        <td style="background: #AEF1AE">
+          BillPayment.this.itemsPrize.apply(value._1).*(value._2)
+        </td>
+      </tr><tr>
+        <td>
+          40
+        </td>
+        <td>
+          37
+        </td>
+        <td>
+          1387
+          -
+          1395
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Tuple2._2
+        </td>
+        <td style="background: #AEF1AE">
+          value._2
+        </td>
+      </tr><tr>
+        <td>
+          40
+        </td>
+        <td>
+          36
+        </td>
+        <td>
+          1375
+          -
+          1383
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Tuple2._1
+        </td>
+        <td style="background: #AEF1AE">
+          value._1
+        </td>
+      </tr><tr>
+        <td>
+          42
+        </td>
+        <td>
+          41
+        </td>
+        <td>
+          1219
+          -
+          1411
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          scala.collection.TraversableOnce.sum
+        </td>
+        <td style="background: #AEF1AE">
+          item._2.map[Double, List[Double]](((value: (String, Double)) =&gt; {
+  (if (BillPayment.this.logger.underlying.isInfoEnabled())
+    BillPayment.this.logger.underlying.info(&quot;product Name  {} and quantity {} ======= {}&quot;, value._1, value._2.asInstanceOf[AnyRef], BillPayment.this.itemsPrize.apply(value._1).*(value._2).asInstanceOf[AnyRef])
+  else
+    (): Unit);
+  BillPayment.this.itemsPrize.apply(value._1).*(value._2)
+}))(immutable.this.List.canBuildFrom[Double]).sum[Double](math.this.Numeric.DoubleIsFractional)
+        </td>
+      </tr><tr>
+        <td>
+          42
+        </td>
+        <td>
+          40
+        </td>
+        <td>
+          1408
+          -
+          1408
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.math.Numeric.DoubleIsFractional
+        </td>
+        <td style="background: #AEF1AE">
+          math.this.Numeric.DoubleIsFractional
+        </td>
+      </tr><tr>
+        <td>
+          44
+        </td>
+        <td>
+          42
+        </td>
+        <td>
+          1433
+          -
+          1452
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Double.*
+        </td>
+        <td style="background: #AEF1AE">
+          tax./(100).*(price)
+        </td>
+      </tr><tr>
+        <td>
+          46
+        </td>
+        <td>
+          43
+        </td>
+        <td>
+          1545
+          -
+          1562
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Double.+
+        </td>
+        <td style="background: #AEF1AE">
+          taxAmount.+(price)
+        </td>
+      </tr><tr>
+        <td>
+          52
+        </td>
+        <td>
+          44
+        </td>
+        <td>
+          1703
+          -
+          1711
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.collection.immutable.List.toList
+        </td>
+        <td style="background: #AEF1AE">
+          x$1.toList
+        </td>
+      </tr><tr>
+        <td>
+          52
+        </td>
+        <td>
+          45
+        </td>
+        <td>
+          1684
+          -
+          1712
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.immutable.MapLike.mapValues
+        </td>
+        <td style="background: #AEF1AE">
+          itemList.mapValues[List[(String, Double)]](((x$1: List[(String, Double)]) =&gt; x$1.toList))
+        </td>
+      </tr><tr>
+        <td>
+          53
+        </td>
+        <td>
+          47
+        </td>
+        <td>
+          1751
+          -
+          1774
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          com.knoldus.BillPayment.calculateTaxForItems
+        </td>
+        <td style="background: #AEF1AE">
+          BillPayment.this.calculateTaxForItems(c)
+        </td>
+      </tr><tr>
+        <td>
+          53
+        </td>
+        <td>
+          46
+        </td>
+        <td>
+          1732
+          -
+          1735
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          0.0
+        </td>
+      </tr><tr>
+        <td>
+          53
+        </td>
+        <td>
+          49
+        </td>
+        <td>
+          1717
+          -
+          1775
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.TraversableOnce.foldLeft
+        </td>
+        <td style="background: #AEF1AE">
+          data2.foldLeft[Double](0.0)(((r: Double, c: (String, List[(String, Double)])) =&gt; r.+(BillPayment.this.calculateTaxForItems(c))))
+        </td>
+      </tr><tr>
+        <td>
+          53
+        </td>
+        <td>
+          48
+        </td>
+        <td>
+          1747
+          -
+          1774
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Double.+
+        </td>
+        <td style="background: #AEF1AE">
+          r.+(BillPayment.this.calculateTaxForItems(c))
+        </td>
+      </tr>
+    </table>
+          </div>
+        </div>
+      </body>
+    </html>

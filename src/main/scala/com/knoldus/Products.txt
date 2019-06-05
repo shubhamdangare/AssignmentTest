@@ -1,0 +1,3 @@
+Pizza 90.0
+Fish 110.0
+ColdDrink 40.0

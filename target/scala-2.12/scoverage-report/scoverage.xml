@@ -1,0 +1,181 @@
+<scoverage 
+statement-count="49" statements-invoked="49" statement-rate="100.00" branch-rate="100.00" version="1.0" timestamp="1559727724044">
+    <packages>
+        <package name="com.knoldus" statement-count="49" statements-invoked="49" statement-rate="100.00">
+            <classes>
+                <class 
+                name="com.knoldus.BillPayment" filename="com/knoldus/BillPayment.scala" statement-count="49" statements-invoked="49" statement-rate="100.00" branch-rate="100.00">
+                    <methods>
+                        <method 
+                        name="com.knoldus/BillPayment/getTotalBillAmount" statement-count="1" statements-invoked="1" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="getTotalBillAmount" start="1044" end="1077" line="32" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="com.knoldus/BillPayment/calculateTaxForItems" statement-count="10" statements-invoked="10" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="calculateTaxForItems" start="1219" end="1411" line="42" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="calculateTaxForItems" start="1185" end="1201" line="36" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="calculateTaxForItems" start="1364" end="1395" line="40" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="calculateTaxForItems" start="1408" end="1408" line="42" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="calculateTaxForItems" start="1545" end="1562" line="46" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="calculateTaxForItems" start="1193" end="1200" line="36" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="calculateTaxForItems" start="1387" end="1395" line="40" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="calculateTaxForItems" start="1375" end="1383" line="40" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="calculateTaxForItems" start="1230" end="1230" line="38" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="calculateTaxForItems" start="1433" end="1452" line="44" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="com.knoldus/BillPayment/getTotalBillForProducts" statement-count="6" statements-invoked="6" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="getTotalBillForProducts" start="1703" end="1711" line="52" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="getTotalBillForProducts" start="1751" end="1774" line="53" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="getTotalBillForProducts" start="1732" end="1735" line="53" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="getTotalBillForProducts" start="1717" end="1775" line="53" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="getTotalBillForProducts" start="1684" end="1712" line="52" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="getTotalBillForProducts" start="1747" end="1774" line="53" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="com.knoldus/BillPayment/&lt;none&gt;" statement-count="32" statements-invoked="32" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="&lt;none&gt;" start="742" end="776" line="25" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="&lt;none&gt;" start="733" end="872" line="24" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="&lt;none&gt;" start="576" end="637" line="19" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="&lt;none&gt;" start="411" end="452" line="16" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="&lt;none&gt;" start="795" end="822" line="26" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="&lt;none&gt;" start="458" end="509" line="17" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="&lt;none&gt;" start="858" end="867" line="27" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="&lt;none&gt;" start="742" end="748" line="25" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="&lt;none&gt;" start="286" end="311" line="12" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="&lt;none&gt;" start="362" end="405" line="15" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="&lt;none&gt;" start="515" end="570" line="18" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="&lt;none&gt;" start="532" end="570" line="18" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="&lt;none&gt;" start="373" end="405" line="15" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="&lt;none&gt;" start="828" end="868" line="27" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="&lt;none&gt;" start="752" end="776" line="25" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="&lt;none&gt;" start="596" end="637" line="19" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="&lt;none&gt;" start="421" end="452" line="16" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="&lt;none&gt;" start="812" end="821" line="26" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="&lt;none&gt;" start="473" end="509" line="17" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="&lt;none&gt;" start="234" end="254" line="10" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="&lt;none&gt;" start="669" end="694" line="22" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="&lt;none&gt;" start="828" end="837" line="27" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="&lt;none&gt;" start="782" end="822" line="26" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="&lt;none&gt;" start="353" end="641" line="14" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="&lt;none&gt;" start="458" end="469" line="17" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="&lt;none&gt;" start="769" end="775" line="25" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="&lt;none&gt;" start="362" end="369" line="15" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="&lt;none&gt;" start="515" end="528" line="18" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="&lt;none&gt;" start="841" end="868" line="27" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="&lt;none&gt;" start="576" end="592" line="19" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="&lt;none&gt;" start="782" end="791" line="26" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.knoldus" class="BillPayment" class-type="Class" full-class-name="com.knoldus.BillPayment" source="/home/shubham/Desktop/ThirdTest/src/main/scala/com/knoldus/BillPayment.scala" method="&lt;none&gt;" start="411" end="417" line="16" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                    </methods>
+</class>
+            </classes>
+        </package>
+    </packages>
+</scoverage>

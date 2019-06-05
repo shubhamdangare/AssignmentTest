@@ -1,0 +1,5 @@
+[0m[[0m[0minfo[0m] [0m[0m[32mBillPaymentSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mPaymentService#bill[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m  when GST is Not Correct[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m  - should have total amount greater then zero[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m  - should give correct bill total[0m[0m
